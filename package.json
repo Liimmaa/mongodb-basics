@@ -4,7 +4,7 @@
   "description": "setup mongodb",
   "main": "mongoDb.js",
   "dependencies": {
-    "mongodb": "^3.5.5"
+    "mongodb": "^3.5.6"
   },
   "devDependencies": {},
   "scripts": {
