@@ -1,5 +1,7 @@
 const MongoClient = require('mongodb').MongoClient;
-const { insertDocuments } = require('./internsDb');
+// const { insertDocuments } = require('./interns');
+const { insertNewDocuments } = require('./interns');
+const { firstDocument } = require('./findinterns');
 
 // connection url
 const url = 'mongodb://localhost:27017';
@@ -14,8 +16,14 @@ MongoClient.connect(url, { useUnifiedTopology: true }, (err, client) => {
     console.log(`Database created by ${dbName}`);
 
     const db = client.db(dbName);
-    
-    insertDocuments(db, () => {
+
+    // insertDocuments(db, () => {
+    //     client.close();
+    // });
+    insertNewDocuments(db, () => {
+        client.close();
+    });
+    firstDocument(db, () => {
         client.close();
     });
 });
